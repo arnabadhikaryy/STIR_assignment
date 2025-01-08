@@ -26,7 +26,7 @@ i_have_account_button.click()
 email_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='text']")))
 
 # Enter the email address
-email_input.send_keys("adhikaryarnab977@gmail.com")
+email_input.send_keys("***********")
 time.sleep(5)
 # Wait for the "Next" button to be clickable
 next_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Next']")))
@@ -43,7 +43,7 @@ time.sleep(5)
 username_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='text']")))
 
 # Enter the username "abcd"
-username_input.send_keys("HaranKu11459620")
+username_input.send_keys("**********")
 time.sleep(5)
 # Wait for the "Next" button to be clickable
 next_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Next']")))
@@ -57,7 +57,7 @@ next_button.click()
 password_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='password']")))
 
 # Enter the password "abc@123"
-password_input.send_keys("55555@Arnab")
+password_input.send_keys("**********")
 
 # Wait for the "Log in" button to be clickable, but only after the password field has a value
 login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Log in']")))
