@@ -24,7 +24,7 @@ i_have_account_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[te
 i_have_account_button.click()
 
 email_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='text']")))
-email_input.send_keys("adhikaryarnab977@gmail.com")
+email_input.send_keys("***********")
 time.sleep(5)
 
 next_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Next']")))
@@ -34,7 +34,7 @@ time.sleep(5)
 # Handle optional username step
 try:
     username_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='text']")))
-    username_input.send_keys("HaranKu11459620")
+    username_input.send_keys("*********")
     time.sleep(2)
 
     next_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Next']")))
@@ -45,7 +45,7 @@ except Exception as e:
 
 # Wait for password input
 password_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='password']")))
-password_input.send_keys("55555@Arnab")
+password_input.send_keys("************")
 
 # Log in
 login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Log in']")))
