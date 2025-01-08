@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Data</title>
+</head>
+<body>
+    <h1>Trending Hashtags</h1>
+
+    {% if trends %}
+        <ul>
+            {% for trend in trends %}
+                <li>{{ trend.time }} - 
+                    {% for key, value in trend.items() %}
+                        {% if key != 'time' %}
+                            <strong>{{ key }}:</strong> {{ value }}<br>
+                        {% endif %}
+                    {% endfor %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No trending data available.</p>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

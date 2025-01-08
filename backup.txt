@@ -1,0 +1,109 @@
+import selenium
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
+driver = webdriver.Chrome()
+driver.get("https://x.com/?lang=en-in")
+
+# Wait until the "Sign in" element is clickable (using XPath)
+wait = WebDriverWait(driver, 10)
+i_have_account_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Sign in']")))
+
+# Click the button
+i_have_account_button.click()
+
+# Optional: Add a short sleep to observe the result or perform additional actions
+#time.sleep(5)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Wait for the email input field to be visible and interactable
+email_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='text']")))
+
+# Enter the email address
+email_input.send_keys("adhikaryarnab977@gmail.com")
+time.sleep(5)
+# Wait for the "Next" button to be clickable
+next_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Next']")))
+
+# Click the "Next" button
+next_button.click()
+
+# Optional: Add a short sleep to observe the result or perform additional actions
+time.sleep(5)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Wait for the username input field to be visible and interactable
+username_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='text']")))
+
+# Enter the username "abcd"
+username_input.send_keys("HaranKu11459620")
+time.sleep(5)
+# Wait for the "Next" button to be clickable
+next_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Next']")))
+
+# Click the "Next" button
+next_button.click()
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Wait for the password input field to be visible and interactable
+password_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='password']")))
+
+# Enter the password "abc@123"
+password_input.send_keys("55555@Arnab")
+
+# Wait for the "Log in" button to be clickable, but only after the password field has a value
+login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Log in']")))
+
+# Click the "Log in" button
+login_button.click()
+
+time.sleep(5)
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Wait for the "Show more" button to be clickable
+show_more_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Show more']")))
+
+# Click the "Show more" button
+show_more_button.click()
+time.sleep(5)
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Wait for the "Trending" button to be clickable
+trending_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Trending']")))
+
+# Click the "Trending" button
+trending_button.click()
+time.sleep(5)
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Wait for the "Trending" section to load and ensure the elements are present
+wait.until(EC.presence_of_all_elements_located((By.XPATH, "//span[contains(@class, 'css-1jxf684') and text()[starts-with(., '#')]]")))
+
+# Find all the trending hashtags (span elements with the specific class and text starting with '#')
+trending_hashtags = driver.find_elements(By.XPATH, "//span[contains(@class, 'css-1jxf684') and text()[starts-with(., '#')]]")
+
+# Print the text of the first 5 trending hashtags
+for i in range(min(5, len(trending_hashtags))):  # Safeguard if there are less than 5 hashtags
+    print(trending_hashtags[i].text)
+
+
+# Close the browser
+driver.close()
+
+
+
+
+
+
+
+
+
+
+
