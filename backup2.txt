@@ -20,8 +20,8 @@ proxies = [
     {"ip": "173.0.9.209", "port": "5792"} 
 ]
 
-username = "banplnli"
-password = "oy5cz23ylmz4"
+username = "*********"
+password = "****************"
 
 def set_proxy(proxy_ip, proxy_port, username, password):
     proxy_url = f"http://{username}:{password}@{proxy_ip}:{proxy_port}"
