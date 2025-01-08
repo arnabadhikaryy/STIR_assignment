@@ -7,7 +7,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# List of proxy IPs and ports
 proxies = [
     {"ip": "198.23.239.134", "port": "6540"},
     {"ip": "207.244.217.165", "port": "6712"},
@@ -21,59 +20,48 @@ proxies = [
     {"ip": "173.0.9.209", "port": "5792"} 
 ]
 
-# Proxy credentials
 username = "banplnli"
 password = "oy5cz23ylmz4"
 
-# Function to set up proxy with authentication
 def set_proxy(proxy_ip, proxy_port, username, password):
     proxy_url = f"http://{username}:{password}@{proxy_ip}:{proxy_port}"
     chrome_options = Options()
     chrome_options.add_argument(f"--proxy-server={proxy_url}")
     return chrome_options
 
-# Randomly select a proxy
 selected_proxy = random.choice(proxies)
 print(f"Using proxy: {selected_proxy['ip']}:{selected_proxy['port']}")
 
 try:
-    # Set up Chrome with the selected proxy
     chrome_options = set_proxy(selected_proxy['ip'], selected_proxy['port'], username, password)
     driver = webdriver.Chrome(options=chrome_options)
 
-    # Open the target website
     driver.get("https://x.com/?lang=en-in")
 
-    # Wait until the "Sign in" button is clickable
     wait = WebDriverWait(driver, 20)
     i_have_account_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Sign in']")))
     i_have_account_button.click()
 
-    # Enter email
     email_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='text']")))
     email_input.send_keys("abc@gmail.com")
     time.sleep(2)
     next_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Next']")))
     next_button.click()
 
-    # Enter username
     username_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='text']")))
     username_input.send_keys("abcd")
     time.sleep(2)
     next_button.click()
 
-    # Enter password
     password_input = wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@name='password']")))
     password_input.send_keys("abc@abc")
     login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Log in']")))
     login_button.click()
 
-    # Find trending hashtags
     trending_hashtags = wait.until(EC.presence_of_all_elements_located(
         (By.XPATH, "//span[contains(@class, 'css-1jxf684') and text()[starts-with(., '#')]]")
     ))
 
-    # Print the first 5 hashtags
     for i in range(min(5, len(trending_hashtags))):
         print(trending_hashtags[i].text)
 
